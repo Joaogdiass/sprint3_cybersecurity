@@ -1,0 +1,4 @@
+# id	name	risk	confidence	action
+10054	X-Content-Type-Options Header Missing	Medium	Medium	WARN
+10038	Content Security Policy (CSP) Header Not Set	Medium	Medium	WARN
+90033	Loosely Scoped Cookie	Low	Low	IGNORE

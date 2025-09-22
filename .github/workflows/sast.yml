@@ -1,0 +1,19 @@
+name: SAST - Semgrep
+on:
+  push: { branches: [ "main" ] }
+  pull_request: { branches: [ "main" ] }
+  workflow_dispatch: {}
+jobs:
+  semgrep:
+    runs-on: ubuntu-latest
+    container: { image: returntocorp/semgrep }
+    permissions: { contents: read, security-events: write }
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Semgrep
+        run: |
+          semgrep scan             --config "p/python"             --config "p/security-audit"             --sarif --output semgrep.sarif
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with: { sarif_file: semgrep.sarif }

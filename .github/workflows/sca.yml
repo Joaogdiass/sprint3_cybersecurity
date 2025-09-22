@@ -1,0 +1,22 @@
+name: SCA - Dependency-Check
+on:
+  push: { branches: [ "main" ] }
+  pull_request: { branches: [ "main" ] }
+jobs:
+  dependency-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Dependency-Check
+        run: |
+          curl -Ls https://github.com/jeremylong/DependencyCheck/releases/latest/download/dependency-check.zip -o dc.zip
+          unzip -q dc.zip -d $HOME/dc
+          echo "$HOME/dc/dependency-check/bin" >> $GITHUB_PATH
+      - name: Run Dependency-Check
+        run: |
+          dependency-check.sh             --project "FinSecure"             --scan "."             --format "HTML"             --out .             --failOnCVSS 7.0
+      - name: Upload SCA Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: dependency-check-report
+          path: dependency-check-report.html
