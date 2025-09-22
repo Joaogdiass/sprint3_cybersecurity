@@ -16,7 +16,7 @@ jobs:
         run: |
           dependency-check.sh             --project "FinSecure"             --scan "."             --format "HTML"             --out .             --failOnCVSS 7.0
       - name: Upload SCA Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dependency-check-report
           path: dependency-check-report.html
