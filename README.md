@@ -1,39 +1,46 @@
-# Sprint 3 Cybersecurity — Starter Kit
+# Sprint 3 — Cybersecurity  
 
-Este repo mínimo te dá SAST (Semgrep), DAST (OWASP ZAP) e SCA (Dependency-Check) prontos no GitHub Actions,
-mesmo sem ter um projeto existente. Inclui uma app Flask simples.
+## 📌 Descrição  
+Este repositório contém os artefatos desenvolvidos como parte da **Sprint 3** da disciplina de **Cybersecurity**.  
+O foco principal foi a implementação e documentação de testes de segurança, incluindo **SAST** (Static Application Security Testing), **DAST** (Dynamic Application Security Testing) e **SCA** (Software Composition Analysis).  
 
-## Como usar
+---
 
-1) Crie um repositório no GitHub e faça upload de todos os arquivos deste kit (ou dê push com git).
-2) Vá em **Actions** (no GitHub) e ative workflows se for solicitado.
-3) Faça um commit/push em `main` ou abra um Pull Request para disparar:
-   - SAST — Semgrep
-   - DAST — ZAP Baseline (vai subir a app Flask no CI)
-   - SCA — Dependency-Check
+## 👨‍💻 Equipe  
+- Júlio César Zampieri — RM98772  
+- Gustavo Melo — RM98809  
+- Carlos Augusto Campos Ganzerli — RM99840  
+- Lucas Carlos Bandeira Teixeira — RM98640  
+- João Gabriel Dias — RM99092  
 
-### Rodar local (opcional)
+---
 
-Crie um Python venv e instale dependências:
-```bash
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-python app/app.py
-# acesse http://localhost:8000
-```
+## 🛠️ Atividades Realizadas  
+- Configuração de **pipeline de CI/CD** com ferramentas de segurança.  
+- Execução de **SAST** (análise estática de código) para identificação de vulnerabilidades no código-fonte.  
+- Execução de **DAST** (análise dinâmica) com OWASP ZAP para validação da aplicação em execução.  
+- Execução de **SCA** (análise de dependências) para detecção de bibliotecas vulneráveis.  
+- Registro de **achados de segurança** em relatório consolidado.  
 
-ZAP Baseline local (requer Docker):
-```bash
-docker run --rm -t owasp/zap2docker-stable zap-baseline.py -t http://host.docker.internal:8000 -r zap-baseline.html
-```
+---
 
-Edite **SECURITY-REPORT.md** depois do primeiro run com os achados e ações.
+## 📑 Estrutura do Repositório  
+- `.github/workflows/` → pipelines configurados no GitHub Actions (SAST, DAST, SCA).  
+- `SECURITY-REPORT.md` → relatório com os resultados das análises de segurança.  
+- `README.md` → este documento de apresentação.  
 
-## Estrutura
-- app/app.py — pequena aplicação Flask (porta 8000)
-- requirements.txt — dependências
-- .github/workflows/ — CI (SAST/DAST/SCA)
-- SECURITY-REPORT.md — modelo de relatório
-- zap-rules.tsv — supressões/downgrades do ZAP
-```
+---
+
+## ✅ Como Utilizar  
+1. Acesse a aba **Actions** no GitHub para acompanhar a execução dos testes.  
+2. Consulte os resultados em:  
+   - **SAST** → GitHub Security (Code scanning alerts).  
+   - **DAST** → Issue automático criado pelo ZAP + logs do workflow.  
+   - **SCA** → Artifact `dependency-check-report.html` disponível nos workflows.  
+3. Preencha o arquivo **SECURITY-REPORT.md** com os achados e recomendações.  
+
+---
+
+## 📌 Observações  
+- Os testes foram realizados em ambiente controlado, conforme orientações da Sprint.  
+- O objetivo é demonstrar a aplicação prática de ferramentas de segurança no ciclo de desenvolvimento de software.  
